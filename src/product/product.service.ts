@@ -33,27 +33,30 @@ export class ProductService {
     return products;
   }
 
-
   async getAllProducts(): Promise<Product[]> {
     const products = await this.productModel.find().exec();
     return products;
   }
-
 
   async getProduct(id: string): Promise<Product> {
     const product = await this.productModel.findById(id).exec();
     return product;
   }
 
-
   async addProduct(CreateProductDTO: CreateProductDTO): Promise<Product> {
     const newProduct = await this.productModel.create(CreateProductDTO);
     return newProduct.save();
   }
 
-
-  async updateProduct(id: string, createProductDTO: CreateProductDTO): Promise<Product> {
-    const updatedProduct = await this.productModel.findByIdAndUpdate(id, createProductDTO, { new: true });
+  async updateProduct(
+    id: string,
+    createProductDTO: CreateProductDTO,
+  ): Promise<Product> {
+    const updatedProduct = await this.productModel.findByIdAndUpdate(
+      id,
+      createProductDTO,
+      { new: true },
+    );
     return updatedProduct;
   }
 
