@@ -1,21 +1,21 @@
 /* eslint-disable prettier/prettier */
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { SchemaTypes } from 'mongoose';
+import { Document, SchemaTypes } from 'mongoose';
 
 export type ItemDocument = Item & Document;
 
 @Schema()
 export class Item {
-  @Prop({ type: SchemaTypes.ObjectId, ref: 'Product' })
+  @Prop({ type: SchemaTypes.ObjectId, ref: 'Product', required: true })
   productId: string;
 
-  @Prop()
+  @Prop({ required: true })
   quantity: number;
 
-  @Prop()
+  @Prop({ required: true })
   price: number;
 
-  @Prop()
+  @Prop({ required: true })
   subTotalPrice: number;
 }
 
